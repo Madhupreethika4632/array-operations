@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Array Operations</title>
+</head>
+<body>
+  <input type="text" id="numberInput" placeholder="Enter a number">
+  <button onclick="addNumber()">Add</button>
+  <button onclick="deleteNumber()">Delete</button>
+  <button onclick="insertNumber()">Insert</button>
+  <button onclick="searchNumber()">Search</button>
+  <button onclick="displayArray()">Display</button>
+  <p id="result"></p>
+
+  <script>
+    let numbers = [];
+
+    function addNumber() {
+      const number = parseInt(document.getElementById("numberInput").value);
+      numbers.push(number);
+      displayArray();
+    }
+
+    function deleteNumber() {
+      const number = parseInt(document.getElementById("numberInput").value);
+      const index = numbers.indexOf(number);
+      if (index !== -1) {
+        numbers.splice(index, 1);
+        displayArray();
+      } else {
+        alert("Number not found");
+      }
+    }
+
+    function insertNumber() {
+      const number = parseInt(document.getElementById("numberInput").value);
+      const index = parseInt(prompt("Enter index for insertion"));
+      numbers.splice(index, 0, number);
+      displayArray();
+    }
+
+    function searchNumber() {
+      const number = parseInt(document.getElementById("numberInput").value);
+      const index = numbers.indexOf(number);
+      if (index !== -1) {
+        alert("Number found at index " + index);
+      } else {
+        alert("Number not found");
+      }
+    }
+
+    function displayArray() {
+      const resultElement = document.getElementById("result");
+      resultElement.textContent = "Array: " + numbers.join(", ");
+    }
+  </script>
+</body>
+</html>
